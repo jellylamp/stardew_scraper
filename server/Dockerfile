@@ -1,5 +1,8 @@
 FROM python:3.7
 
+# Change the stop signal to sigint to more quickly stop this container.
+STOPSIGNAL SIGINT
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
