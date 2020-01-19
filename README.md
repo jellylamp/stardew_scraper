@@ -1,2 +1,5 @@
-# stardew_scraper
-A web scraper for the Stardew Valley wiki
+# Stardew Scraper
+A web scraper for the [Stardew Valley wiki](https://stardewvalleywiki.com/Stardew_Valley_Wiki).
+
+
+
