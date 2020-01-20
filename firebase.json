@@ -1,0 +1,22 @@
+{
+  "functions": {
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run lint"
+    ]
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [ {
+      "source": "**",
+      "run": {
+        "serviceId": "stardewscraper",  // "service name" (from when you deployed the container image)
+        "region": "us-east1"     // optional (if omitted, default is us-central1)
+      }
+    } ]
+  }
+}
