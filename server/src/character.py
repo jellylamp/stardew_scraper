@@ -15,4 +15,8 @@ class Character():
         for gift in gift_soup.find_all('a'):
             gift_list.append(gift.attrs['title'])
 
-        return ", ".join(gift_list[:-2] + [", and ".join(gift_list[-2:])])
+        return SoupUtils.join_list_human_readable(gift_list)
+
+    def get_universal_loves(self, soup):
+        header_id = "Universal_Loves"
+        return SoupUtils.get_header_section_and_lists(self, soup, header_id, 'h3')

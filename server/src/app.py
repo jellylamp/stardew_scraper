@@ -9,8 +9,6 @@ import requests
 app = Flask(__name__)
 character = Character()
 soup_utils = SoupUtils()
-API_URL = constants.STARDEW_WIKI
-SEARCH_API = constants.SEARCH_API
 
 @app.route('/api/v1/birthday', methods=['GET'])
 def get_birthday():
@@ -18,7 +16,7 @@ def get_birthday():
     return jsonify(_get_birthday(name))
 
 def _get_birthday(name):
-    url = f'{API_URL}{SEARCH_API}{name}'
+    url = f'{constants.STARDEW_WIKI}{constants.SEARCH_API}{name}'
     response = requests.get(url)
     soup = soup_utils.make_soup(response.text)
     search_success = soup_utils.was_search_successful(soup)
@@ -36,7 +34,7 @@ def get_best_gifts():
     return jsonify(_get_best_gifts(name))
 
 def _get_best_gifts(name):
-    url = f'{API_URL}{SEARCH_API}{name}'
+    url = f'{constants.STARDEW_WIKI}{constants.SEARCH_API}{name}'
     response = requests.get(url)
     soup = soup_utils.make_soup(response.text)
     search_success = soup_utils.was_search_successful(soup)
@@ -48,6 +46,17 @@ def _get_best_gifts(name):
     else:
         return {'best_gifts': f'Name {name} not found'}
 
+@app.route('/api/v1/universal_loves', methods=['GET'])
+def get_universal_loves():
+    return jsonify(_get_universal_loves())
+
+def _get_universal_loves():
+    url = f'{constants.STARDEW_WIKI}{constants.UNIVERSAL_LOVES}'
+    response = requests.get(url)
+    soup = soup_utils.make_soup(response.text)
+    universal_loves = character.get_universal_loves(soup)
+    return {'universal_loves': universal_loves}
+
 @app.route('/api/v1/post_fulfillment', methods=['POST'])
 def post_fulfillment():
     data = request.get_json()
@@ -58,6 +67,8 @@ def post_fulfillment():
         response = _get_birthday(name_param).get('birthday')
     elif intent == 'best_gifts':
         response = _get_best_gifts(name_param).get('best_gifts')
+    elif intent == 'universal_loves':
+        response = _get_universal_loves().get('universal_loves')
 
     response_dict = {
         'fulfillmentText' : response
