@@ -57,6 +57,17 @@ def _get_universal_loves():
     universal_loves = character.get_universal_loves(soup)
     return {'universal_loves': universal_loves}
 
+@app.route('/api/v1/universal_likes', methods=['GET'])
+def get_universal_likes():
+    return jsonify(_get_universal_likes())
+
+def _get_universal_likes():
+    url = f'{constants.STARDEW_WIKI}{constants.UNIVERSAL_LIKES}'
+    response = requests.get(url)
+    soup = soup_utils.make_soup(response.text)
+    universal_likes = character.get_universal_likes(soup)
+    return {'universal_likes': universal_likes}
+
 @app.route('/api/v1/post_fulfillment', methods=['POST'])
 def post_fulfillment():
     data = request.get_json()
@@ -69,6 +80,8 @@ def post_fulfillment():
         response = _get_best_gifts(name_param).get('best_gifts')
     elif intent == 'universal_loves':
         response = _get_universal_loves().get('universal_loves')
+    elif intent == 'universal_likes':
+        response = _get_universal_likes().get('universal_likes')
 
     response_dict = {
         'fulfillmentText' : response

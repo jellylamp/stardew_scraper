@@ -23,16 +23,31 @@ class SoupUtils():
                 details = parent_tr.find(id='infoboxdetail')
                 return details
 
-    def get_header_section_and_lists(self, soup, header_id, header_parent):
+    def get_header_section_and_lists(self, soup, header_id, header_parent, use_all_links=True):
+        """
+        Get the header section with the provided id and all of the list items under it.
+
+        :param soup: Beautiful Soup object
+        :param header_id: the header id
+        :param header_parent: the header wrapper (i.e. h4)
+        :param use_all_links: defaults to true. If passed in false, will not grab all the items
+               in a list item, only the first.
+        :return: list of items
+        """
         header = soup.find(id=header_id).find_parent(header_parent)
         list_items = []
 
         sibling = header.find_next_sibling("ul")
         list_items_to_traverse = sibling.find_all('li')
         for item in list_items_to_traverse:
-            list_items.append(item.find('a').attrs['title'])
+            if use_all_links:
+                item_links = item.find_all('a')
+                for link in item_links:
+                    list_items.append(link.attrs['title'])
+            else:
+                list_items.append(item.find('a').attrs['title'])
 
-        return SoupUtils.join_list_human_readable(self, list_items)
+        return list_items
 
     def join_list_human_readable(self, list_to_join):
         return ", ".join(list_to_join[:-2] + [", and ".join(list_to_join[-2:])])
