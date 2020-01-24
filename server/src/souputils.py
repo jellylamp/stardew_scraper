@@ -49,5 +49,8 @@ class SoupUtils():
 
         return list_items
 
+    def list_sections_with_class(self, soup, class_name):
+        return soup.find_all(class_=class_name)
+
     def join_list_human_readable(self, list_to_join):
         return ", ".join(list_to_join[:-2] + [", and ".join(list_to_join[-2:])])

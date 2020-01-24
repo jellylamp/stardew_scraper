@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, request
 from character import Character
 from souputils import SoupUtils
+from bundles import Bundles
 import constants
 import os
 import requests
@@ -9,6 +10,7 @@ import requests
 app = Flask(__name__)
 character = Character()
 soup_utils = SoupUtils()
+bundles = Bundles()
 
 @app.route('/api/v1/birthday', methods=['GET'])
 def get_birthday():
@@ -68,6 +70,17 @@ def _get_universal_likes():
     universal_likes = character.get_universal_likes(soup)
     return {'universal_likes': universal_likes}
 
+@app.route('/api/v1/list_community_center_rooms', methods=['GET'])
+def list_community_center_rooms():
+    return jsonify(_list_community_center_rooms())
+
+def _list_community_center_rooms():
+    url = f'{constants.STARDEW_WIKI}{constants.BUNDLES}'
+    response = requests.get(url)
+    soup = soup_utils.make_soup(response.text)
+    room_list = bundles.list_community_center_rooms(soup)
+    return {'community_center_rooms': room_list}
+
 @app.route('/api/v1/post_fulfillment', methods=['POST'])
 def post_fulfillment():
     data = request.get_json()
@@ -82,6 +95,8 @@ def post_fulfillment():
         response = _get_universal_loves().get('universal_loves')
     elif intent == 'universal_likes':
         response = _get_universal_likes().get('universal_likes')
+    elif intent == 'community_center_rooms':
+        response = _list_community_center_rooms().get('community_center_rooms')
 
     response_dict = {
         'fulfillmentText' : response
