@@ -49,6 +49,25 @@ class SoupUtils():
 
         return list_items
 
+    def get_all_table_ids(self, soup):
+        """
+        Get all of the tables on a page and their ids.
+
+        :param soup: Beautiful Soup object
+        :return: list of table header ids with underscores replaced
+        """
+        header_id_lists = []
+
+        tables_to_traverse = soup.find_all('table')
+
+        for table in tables_to_traverse:
+            first_row = table.find('tr')
+            first_th = first_row.find('th')
+            if first_th is not None:
+                if first_th.has_attr('id'):
+                    header_id_lists.append(first_th.attrs['id'].replace("_", " "))
+        return header_id_lists
+
     def list_sections_with_class(self, soup, class_name):
         return soup.find_all(class_=class_name)
 

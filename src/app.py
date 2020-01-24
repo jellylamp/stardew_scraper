@@ -81,6 +81,17 @@ def _list_community_center_rooms():
     room_list = bundles.list_community_center_rooms(soup)
     return {'community_center_rooms': room_list}
 
+@app.route('/api/v1/list_all_bundles', methods=['GET'])
+def list_all_bundles():
+    return jsonify(_list_all_bundles())
+
+def _list_all_bundles():
+    url = f'{constants.STARDEW_WIKI}{constants.BUNDLES}'
+    response = requests.get(url)
+    soup = soup_utils.make_soup(response.text)
+    bundles_list = bundles.list_all_bundles(soup)
+    return {'bundles_list': bundles_list}
+
 @app.route('/api/v1/post_fulfillment', methods=['POST'])
 def post_fulfillment():
     data = request.get_json()
@@ -97,6 +108,8 @@ def post_fulfillment():
         response = _get_universal_likes().get('universal_likes')
     elif intent == 'community_center_rooms':
         response = _list_community_center_rooms().get('community_center_rooms')
+    elif intent == 'bundles_list':
+        response = _list_all_bundles().get('bundles_list')
 
     response_dict = {
         'fulfillmentText' : response

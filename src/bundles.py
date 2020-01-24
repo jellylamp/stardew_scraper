@@ -16,3 +16,10 @@ class Bundles():
             if text_to_add not in items_to_exclude:
                 room_list.append(room.text)
         return SoupUtils.join_list_human_readable(self, room_list)
+
+    def list_all_bundles(self, soup):
+        bundle_id_list = SoupUtils.get_all_table_ids(self, soup)
+        # remove bundle from every entry
+        list_without_bundle = [text.rsplit(' ', 1)[0] for text in bundle_id_list]
+
+        return SoupUtils.join_list_human_readable(self, list_without_bundle)
