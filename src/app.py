@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from flask import Flask, jsonify, request
+from flask_restx import Resource, Api
 from character import Character
 from souputils import SoupUtils
 from bundles import Bundles
@@ -8,14 +9,22 @@ import os
 import requests
 
 app = Flask(__name__)
+api = Api(app, version='1.0.0', title='Stardew Scraper API',
+    description='An API that scrapes the Stardew Valley wiki for use with Google Home.',
+)
+
 character = Character()
 soup_utils = SoupUtils()
 bundles = Bundles()
 
-@app.route('/api/v1/birthday', methods=['GET'])
-def get_birthday():
-    name = request.args.get('name')
-    return jsonify(_get_birthday(name))
+@api.route('/api/v1/birthday')
+class Birthday(Resource):
+    """
+    Given a Village name, return their birthday.
+    """
+    def get(self):
+        name = request.args.get('name')
+        return jsonify(_get_birthday(name))
 
 def _get_birthday(name):
     url = f'{constants.STARDEW_WIKI}{constants.SEARCH_API}{name}'
@@ -30,10 +39,14 @@ def _get_birthday(name):
     else:
         return {'birthday': f'Name {name} not found'}
 
-@app.route('/api/v1/best_gifts', methods=['GET'])
-def get_best_gifts():
-    name = request.args.get('name')
-    return jsonify(_get_best_gifts(name))
+@api.route('/api/v1/best_gifts')
+class BestGifts(Resource):
+    """
+    Given a villager, get the their loved gifts.
+    """
+    def get(self):
+        name = request.args.get('name')
+        return jsonify(_get_best_gifts(name))
 
 def _get_best_gifts(name):
     url = f'{constants.STARDEW_WIKI}{constants.SEARCH_API}{name}'
@@ -48,9 +61,13 @@ def _get_best_gifts(name):
     else:
         return {'best_gifts': f'Name {name} not found'}
 
-@app.route('/api/v1/universal_loves', methods=['GET'])
-def get_universal_loves():
-    return jsonify(_get_universal_loves())
+@api.route('/api/v1/universal_loves')
+class UniversalLoves(Resource):
+    """
+    Returns all Universal Loves.
+    """
+    def get(self):
+        return jsonify(_get_universal_loves())
 
 def _get_universal_loves():
     url = f'{constants.STARDEW_WIKI}{constants.UNIVERSAL_LOVES}'
@@ -59,9 +76,13 @@ def _get_universal_loves():
     universal_loves = character.get_universal_loves(soup)
     return {'universal_loves': universal_loves}
 
-@app.route('/api/v1/universal_likes', methods=['GET'])
-def get_universal_likes():
-    return jsonify(_get_universal_likes())
+@api.route('/api/v1/universal_likes')
+class UniversalLikes(Resource):
+    """
+    Returns all Universal Likes.
+    """
+    def get(self):
+        return jsonify(_get_universal_likes())
 
 def _get_universal_likes():
     url = f'{constants.STARDEW_WIKI}{constants.UNIVERSAL_LIKES}'
@@ -70,9 +91,13 @@ def _get_universal_likes():
     universal_likes = character.get_universal_likes(soup)
     return {'universal_likes': universal_likes}
 
-@app.route('/api/v1/list_community_center_rooms', methods=['GET'])
-def list_community_center_rooms():
-    return jsonify(_list_community_center_rooms())
+@api.route('/api/v1/list_community_center_rooms')
+class ListCommunityCenterRooms(Resource):
+    """
+    Lists every room in the community center.
+    """
+    def get(self):
+        return jsonify(_list_community_center_rooms())
 
 def _list_community_center_rooms():
     url = f'{constants.STARDEW_WIKI}{constants.BUNDLES}'
@@ -81,9 +106,13 @@ def _list_community_center_rooms():
     room_list = bundles.list_community_center_rooms(soup)
     return {'community_center_rooms': room_list}
 
-@app.route('/api/v1/list_all_bundles', methods=['GET'])
-def list_all_bundles():
-    return jsonify(_list_all_bundles())
+@api.route('/api/v1/list_all_bundles')
+class ListAllBundles(Resource):
+    """
+    Lists every bundle in the community center.
+    """
+    def get(self):
+        return jsonify(_list_all_bundles())
 
 def _list_all_bundles():
     url = f'{constants.STARDEW_WIKI}{constants.BUNDLES}'
@@ -92,29 +121,33 @@ def _list_all_bundles():
     bundles_list = bundles.list_all_bundles(soup)
     return {'bundles_list': bundles_list}
 
-@app.route('/api/v1/post_fulfillment', methods=['POST'])
-def post_fulfillment():
-    data = request.get_json()
-    intent = data.get('queryResult').get('action')
-    name_param = data.get('queryResult').get('parameters').get('name')
+@api.route('/api/v1/post_fulfillment')
+class PostFulfillment(Resource):
+    """
+    The fulfillment URL that Google Home hits for queries.
+    """
+    def post(self):
+        data = request.get_json()
+        intent = data.get('queryResult').get('action')
+        name_param = data.get('queryResult').get('parameters').get('name')
 
-    if intent == 'birthday':
-        response = _get_birthday(name_param).get('birthday')
-    elif intent == 'best_gifts':
-        response = _get_best_gifts(name_param).get('best_gifts')
-    elif intent == 'universal_loves':
-        response = _get_universal_loves().get('universal_loves')
-    elif intent == 'universal_likes':
-        response = _get_universal_likes().get('universal_likes')
-    elif intent == 'community_center_rooms':
-        response = _list_community_center_rooms().get('community_center_rooms')
-    elif intent == 'bundles_list':
-        response = _list_all_bundles().get('bundles_list')
+        if intent == 'birthday':
+            response = _get_birthday(name_param).get('birthday')
+        elif intent == 'best_gifts':
+            response = _get_best_gifts(name_param).get('best_gifts')
+        elif intent == 'universal_loves':
+            response = _get_universal_loves().get('universal_loves')
+        elif intent == 'universal_likes':
+            response = _get_universal_likes().get('universal_likes')
+        elif intent == 'community_center_rooms':
+            response = _list_community_center_rooms().get('community_center_rooms')
+        elif intent == 'bundles_list':
+            response = _list_all_bundles().get('bundles_list')
 
-    response_dict = {
-        'fulfillmentText' : response
-    }
-    return jsonify(response_dict)
+        response_dict = {
+            'fulfillmentText': response
+        }
+        return jsonify(response_dict)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
