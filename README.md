@@ -7,6 +7,10 @@ Deploy to Docker with the `server/src/build_and_run_docker.sh` file.
 ## Deploy to Cloud Run
 The following [guide](https://firebase.google.com/docs/hosting/cloud-run) was used for deployment to Google Cloud Run.
 
+Run these commands to build and deploy:
+* `gcloud builds submit --tag gcr.io/stardew-scraper-3cc3b/stardewscraper`
+* `gcloud beta run deploy --image gcr.io/stardew-scraper-3cc3b/stardewscraper --platform managed`
+
 ## Deployment Information
 * Cloud deployments can be found [here](https://stardew-scraper-3cc3b.firebaseapp.com/api/v1/).
 * Cloud deployment management can be found [here](https://console.cloud.google.com/run?project=stardew-scraper-3cc3b&refresh=true).
