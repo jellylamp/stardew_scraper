@@ -121,6 +121,22 @@ def _list_all_bundles():
     bundles_list = bundles.list_all_bundles(soup)
     return {'bundles_list': bundles_list}
 
+@api.route('/api/v1/list_bundle_contents')
+class ListBundleContents(Resource):
+    """
+    Lists items from the given bundle.
+    """
+    def get(self):
+        name = request.args.get('name')
+        return jsonify(_list_bundle_contents(name))
+
+def _list_bundle_contents(name):
+    url = f'{constants.STARDEW_WIKI}{constants.BUNDLES}'
+    response = requests.get(url)
+    soup = soup_utils.make_soup(response.text)
+    bundles_content = bundles.list_bundle_contents(soup, name)
+    return {'bundles_content': bundles_content}
+
 @api.route('/api/v1/post_fulfillment')
 class PostFulfillment(Resource):
     """
@@ -143,6 +159,8 @@ class PostFulfillment(Resource):
             response = _list_community_center_rooms().get('community_center_rooms')
         elif intent == 'bundles_list':
             response = _list_all_bundles().get('bundles_list')
+        elif intent == 'bundles_content':
+            response = _list_bundle_contents(name_param).get('bundles_content')
 
         response_dict = {
             'fulfillmentText': response

@@ -68,6 +68,34 @@ class SoupUtils():
                     header_id_lists.append(first_th.attrs['id'].replace("_", " "))
         return header_id_lists
 
+    def get_table_entries(self, soup, table_id):
+        """
+        Loops through a table looking for nametemplate items and qualitycontainers to grab items in the table.
+        :param soup: Beautiful soup object
+        :param table_id: the table id
+        :return: the list of bundle contents
+        """
+        table_soup = soup.find(id=table_id).find_parent('tr')
+        tr_list = table_soup.find_next_siblings('tr')
+
+        bundle_contents = []
+        for row in tr_list:
+            # normally, this is a name template
+            name_template_sibling = row.find(id='nametemplate')
+
+            # if its a quality item do this
+            bundle_quality_sibling = row.find(id='qualitycontainersm')
+            if name_template_sibling is not None:
+                bundle_link = name_template_sibling.find('a')
+                bundle_contents.append(bundle_link.attrs['title'])
+            elif bundle_quality_sibling is not None:
+                bundle_quality_item = bundle_quality_sibling.find_parent('td')
+                bundle_td = bundle_quality_item.find_next_sibling('td')
+                # strip out link from td text
+                bundle_contents.append(bundle_td.text.strip())
+
+        return bundle_contents
+
     def list_sections_with_class(self, soup, class_name):
         return soup.find_all(class_=class_name)
 

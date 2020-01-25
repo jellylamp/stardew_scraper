@@ -23,3 +23,7 @@ class Bundles():
         list_without_bundle = [text.rsplit(' ', 1)[0] for text in bundle_id_list]
 
         return SoupUtils.join_list_human_readable(self, list_without_bundle)
+
+    def list_bundle_contents(self, soup, name):
+        content_list = SoupUtils.get_table_entries(self, soup, name)
+        return SoupUtils.join_list_human_readable(self, content_list[:-1])
