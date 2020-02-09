@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, request
 from flask_restx import Resource, Api
 from character import Character
+from fish import Fish
 from souputils import SoupUtils
 from bundles import Bundles
 import constants
@@ -16,6 +17,7 @@ api = Api(app, version='1.0.0', title='Stardew Scraper API',
 character = Character()
 soup_utils = SoupUtils()
 bundles = Bundles()
+fish = Fish()
 
 @api.route('/api/v1/birthday')
 class Birthday(Resource):
@@ -60,6 +62,28 @@ def _get_best_gifts(name):
         return {'best_gifts': best_gifts}
     else:
         return {'best_gifts': f'Name {name} not found'}
+
+@api.route('/api/v1/fish_info')
+class FishInfo(Resource):
+    """
+    Given a fish, get the basic information about them.
+    """
+    def get(self):
+        name = request.args.get('name')
+        return jsonify(_get_fish_info(name))
+
+def _get_fish_info(name):
+    url = f'{constants.STARDEW_WIKI}{constants.SEARCH_API}{name}'
+    response = requests.get(url)
+    soup = soup_utils.make_soup(response.text)
+    search_success = soup_utils.was_search_successful(soup)
+    if search_success:
+        # TODO HANDLE when a character isn't passed in. i.e. barn. Right now it just asks you to repeat yourself.
+
+        fish_info = fish.get_fish_info(soup)
+        return {'fish_info': fish_info}
+    else:
+        return {'fish_info': f'Name {name} not found'}
 
 @api.route('/api/v1/universal_loves')
 class UniversalLoves(Resource):
