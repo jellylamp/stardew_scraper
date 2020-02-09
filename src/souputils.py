@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-class SoupUtils():
+class SoupUtils:
     def make_soup(self, html):
         return BeautifulSoup(html, 'html.parser')
 
@@ -22,6 +22,7 @@ class SoupUtils():
                 parent_tr = box_section.find_parent('tr')
                 details = parent_tr.find(id='infoboxdetail')
                 return details
+        return None
 
     def get_header_section_and_lists(self, soup, header_id, header_parent, use_all_links=True):
         """
@@ -85,6 +86,7 @@ class SoupUtils():
 
             # if its a quality item do this
             bundle_quality_sibling = row.find(id='qualitycontainersm')
+
             if name_template_sibling is not None:
                 bundle_link = name_template_sibling.find('a')
                 bundle_contents.append(bundle_link.attrs['title'])
@@ -100,4 +102,10 @@ class SoupUtils():
         return soup.find_all(class_=class_name)
 
     def join_list_human_readable(self, list_to_join):
-        return ", ".join(list_to_join[:-2] + [", and ".join(list_to_join[-2:])])
+        connector_string = ', and '
+
+        # commas don't make sense if its only two things
+        if len(list_to_join) == 2:
+            connector_string = ' and '
+
+        return ", ".join(list_to_join[:-2] + [connector_string.join(list_to_join[-2:])])

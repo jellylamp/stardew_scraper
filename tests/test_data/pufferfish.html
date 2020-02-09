@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"4b66539c25",applicationID:"359151563"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<title>Pufferfish - Stardew Valley Wiki</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Pufferfish","wgTitle":"Pufferfish","wgCurRevisionId":95466,"wgRevisionId":95466,"wgArticleId":2486,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Ocean fish","Summer fish"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Pufferfish","wgRelevantArticleId":2486,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","skins.vector.js"]);
+} );</script>
+<link rel="stylesheet" href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="generator" content="MediaWiki 1.26.2" />
+<meta name="description" content="The Pufferfish is a fish that can be caught at the beach, on sunny summer days between 12pm and 4pm.  It can also be purchased from the Traveling Cart for 600-1,000g." />
+<meta name="twitter:title" content="Pufferfish - Stardew Valley Wiki" />
+<meta name="keywords" content="Stardew Valley Wiki, Stardew Valley, Pufferfish, gift" />
+<link rel="shortcut icon" href="/mediawiki/skins/Vector/stardewimages/favicon.png" />
+<link rel="search" type="application/opensearchdescription+xml" href="/mediawiki/opensearch_desc.php" title="Stardew Valley Wiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="https://stardewvalleywiki.com/mediawiki/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Stardew Valley Wiki Atom feed" href="/mediawiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+
+<script src="https://static.nitropay.com/nads/nads-49.min.js"></script>
+
+<meta property="og:title" content="Pufferfish - Stardew Valley Wiki" />
+
+<meta property="og:image" content="https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png" />
+
+<meta property="og:type" content="article" />
+
+<meta property="og:site_name" content="Stardew Valley Wiki" />
+
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mediawiki/skins/Vector/csshover.min.htc")}</style><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Pufferfish skin-vector action-view">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="contentwrapper"><div id="adspaceholder"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<div id="mobilelogo"></div>
+			<div style="width:100%;"><div class="responsiveadtop" style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58); margin-top:-10px; margin-bottom:10px;">
+<div id="stardew_top_responsive" style="max-height:90px;"></div>
+<script type="text/javascript">
+nads.createAd('stardew_top_responsive',
+    {
+        sizes: [],
+        adsensePub: '2969324762379448',
+        adsenseSlot: '5093789219',
+        floor: 0.1,
+        refreshLimit: 10,
+        refreshTime: 90,
+        refreshDisabled: ["adsense"],
+        report: {
+            enabled: true,
+            wording: 'Report Ad',
+            position: 'fixed-bottom-right'
+        }
+    }
+);
+</script>
+</div><div class="sociallinks">
+<a title="Twitter" target=_blank href="https://twitter.com/share?url=https://stardewvalleywiki.com/Pufferfish" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" ><img border="0" alt="Twitter" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Twitter.png" width="23" height="23"></a>
+<a title="Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://stardewvalleywiki.com/Pufferfish" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" ><img border="0" alt="Facebook" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Facebook.png" width="23" height="23"></a>
+<a title="Tumblr" href="https://www.tumblr.com/share/link?url=https://stardewvalleywiki.com/Pufferfish" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" ><img border="0" alt="Tumblr" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Tumblr.png" width="23" height="23"></a>
+<a title="Reddit" href="https://www.reddit.com/submit?url=https://stardewvalleywiki.com/Pufferfish" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" ><img border="0" alt="Reddit" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Reddit.png" width="23" height="23"></a>
+</div></div><div><div id="googlead">
+</div></div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Pufferfish</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Stardew Valley Wiki</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="infoboxborder">
+<table id="infoboxtable">
+<tr>
+<td colspan="2" id="infoboxheader">Pufferfish
+</td></tr>
+<tr>
+<td colspan="2" style="padding-bottom: 5px;"><div class="center"><div class="floatnone"><a href="/File:Pufferfish.png" class="image"><img alt="Pufferfish.png" src="/mediawiki/images/b/ba/Pufferfish.png" width="48" height="48" /></a></div></div>
+</td></tr>
+<tr>
+<td colspan="2" id="infoboxdetail" style="text-align: center; font-style: italic;">Inflates when threatened.
+</td></tr>
+<tr>
+<td colspan="2" id="infoboxsection" style="text-align:center;">Information
+</td></tr>
+<tr>
+<td id="infoboxsection">Found in:
+</td>
+<td id="infoboxdetail"><a href="/The_Beach" title="The Beach">Ocean</a>
+</td></tr>
+<tr>
+<td id="infoboxsection">Time:
+</td>
+<td id="infoboxdetail">12pm – 4pm
+</td></tr>
+<tr>
+<td id="infoboxsection">Season:
+</td>
+<td id="infoboxdetail"><img alt="Summer.png" src="/mediawiki/images/thumb/8/85/Summer.png/24px-Summer.png" width="24" height="16" srcset="/mediawiki/images/thumb/8/85/Summer.png/36px-Summer.png 1.5x, /mediawiki/images/8/85/Summer.png 2x" />&#160;<a href="/Summer" title="Summer">Summer</a>
+</td></tr>
+<tr>
+<td id="infoboxsection">Weather:
+</td>
+<td id="infoboxdetail"><img alt="Sunny.png" src="/mediawiki/images/9/9a/Sunny.png" width="16" height="16" />&#160;<a href="/Weather" title="Weather">Sun</a>
+</td></tr>
+<tr>
+<td id="infoboxsection">Difficulty:
+</td>
+<td id="infoboxdetail">80
+</td></tr>
+<tr>
+<td id="infoboxsection"><a href="/Fish#Fishing_Mini-Game" title="Fish"><span style="color: white;">Behavior</span></a>:
+</td>
+<td id="infoboxdetail">Floater
+</td></tr>
+<tr>
+<td id="infoboxsection">Size (inches):
+</td>
+<td id="infoboxdetail">1-37
+</td></tr>
+<tr>
+<td id="infoboxsection">XP:
+</td>
+<td id="infoboxdetail">29&#160;&#160;&#160;<img alt="Silver Quality.png" src="/mediawiki/images/thumb/e/eb/Silver_Quality.png/14px-Silver_Quality.png" width="14" height="14" srcset="/mediawiki/images/thumb/e/eb/Silver_Quality.png/21px-Silver_Quality.png 1.5x, /mediawiki/images/e/eb/Silver_Quality.png 2x" />&#8201;32&#160;&#160;&#160;<img alt="Gold Quality.png" src="/mediawiki/images/thumb/9/9f/Gold_Quality.png/14px-Gold_Quality.png" width="14" height="14" srcset="/mediawiki/images/thumb/9/9f/Gold_Quality.png/21px-Gold_Quality.png 1.5x, /mediawiki/images/9/9f/Gold_Quality.png 2x" />&#8201;35&#160;&#160;&#160;<img alt="Iridium Quality.png" src="/mediawiki/images/thumb/b/bc/Iridium_Quality.png/14px-Iridium_Quality.png" width="14" height="14" srcset="/mediawiki/images/thumb/b/bc/Iridium_Quality.png/21px-Iridium_Quality.png 1.5x, /mediawiki/images/b/bc/Iridium_Quality.png 2x" />&#8201;41
+</td></tr>
+<tr>
+<td id="infoboxsection">Healing Effect:
+</td>
+<td id="infoboxdetail"><span class="sortkey" style="display:none;">3-40</span>
+<table>
+<tr>
+<td> <img alt="Poison.png" src="/mediawiki/images/thumb/0/05/Poison.png/24px-Poison.png" width="24" height="24" srcset="/mediawiki/images/thumb/0/05/Poison.png/36px-Poison.png 1.5x, /mediawiki/images/0/05/Poison.png 2x" />
+</td>
+<td> -100 <a href="/Energy" title="Energy">Energy</a>
+</td></tr>
+<tr>
+<td style="vertical-align: top;"> <div id="qualitycontainersm"><div id="qualityimage"><img alt="Poison.png" src="/mediawiki/images/thumb/0/05/Poison.png/24px-Poison.png" width="24" height="24" srcset="/mediawiki/images/thumb/0/05/Poison.png/36px-Poison.png 1.5x, /mediawiki/images/0/05/Poison.png 2x" /><div class="qualityindicator"><img alt="Silver Quality Icon.png" src="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/24px-Silver_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/36px-Silver_Quality_Icon.png 1.5x, /mediawiki/images/8/8a/Silver_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td> -140 <a href="/Energy" title="Energy">Energy</a>
+</td></tr>
+<tr>
+<td> <div id="qualitycontainersm"><div id="qualityimage"><img alt="Poison.png" src="/mediawiki/images/thumb/0/05/Poison.png/24px-Poison.png" width="24" height="24" srcset="/mediawiki/images/thumb/0/05/Poison.png/36px-Poison.png 1.5x, /mediawiki/images/0/05/Poison.png 2x" /><div class="qualityindicator"><img alt="Gold Quality Icon.png" src="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/24px-Gold_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/36px-Gold_Quality_Icon.png 1.5x, /mediawiki/images/4/47/Gold_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td> -180 <a href="/Energy" title="Energy">Energy</a>
+</td></tr>
+<tr>
+<td> <div id="qualitycontainersm"><div id="qualityimage"><img alt="Poison.png" src="/mediawiki/images/thumb/0/05/Poison.png/24px-Poison.png" width="24" height="24" srcset="/mediawiki/images/thumb/0/05/Poison.png/36px-Poison.png 1.5x, /mediawiki/images/0/05/Poison.png 2x" /><div class="qualityindicator"><img alt="Iridium Quality Icon.png" src="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/24px-Iridium_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/36px-Iridium_Quality_Icon.png 1.5x, /mediawiki/images/e/e4/Iridium_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td> -260 <a href="/Energy" title="Energy">Energy</a>
+</td></tr>
+
+
+</table>
+</td></tr>
+<table style="width: 100%; margin-top: -2px;">
+
+<tr>
+<td id="infoboxsection" colspan="2" style="text-align: center; padding-left: 0; padding-right: 0;">Sell Prices
+</td></tr>
+<table style="margin: -2px 0 0 0 !important; padding: 0 !important; width: 100% !important;">
+
+<tr>
+<td id="infoboxsection" style="width: 30%;">Base<br />Price:
+</td>
+<td id="infoboxsection" style="width: 35%;"><img alt="Fisher.png" src="/mediawiki/images/thumb/4/44/Fisher.png/24px-Fisher.png" width="24" height="24" srcset="/mediawiki/images/thumb/4/44/Fisher.png/36px-Fisher.png 1.5x, /mediawiki/images/4/44/Fisher.png 2x" /> <a href="/Skills#Fishing" title="Skills"><span style="color: white;">Fisher</span></a>:<br /><i>(+25%)</i>
+</td>
+<td id="infoboxsection" style="width: 35%;"><img alt="Angler Icon.png" src="/mediawiki/images/thumb/2/22/Angler_Icon.png/24px-Angler_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/2/22/Angler_Icon.png/36px-Angler_Icon.png 1.5x, /mediawiki/images/2/22/Angler_Icon.png 2x" /> <a href="/Skills#Fishing" title="Skills"><span style="color: white;">Angler</span></a>:<br /><i>(+50%)</i>
+</td></tr>
+<tr>
+<td id="infoboxdetail">
+<table>
+<tr>
+<td><span class="sortkey" style="display:none;">3200</span>
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"></div></div></div>
+</td>
+<td>200g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Silver Quality Icon.png" src="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/24px-Silver_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/36px-Silver_Quality_Icon.png 1.5x, /mediawiki/images/8/8a/Silver_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>250g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Gold Quality Icon.png" src="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/24px-Gold_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/36px-Gold_Quality_Icon.png 1.5x, /mediawiki/images/4/47/Gold_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>300g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Iridium Quality Icon.png" src="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/24px-Iridium_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/36px-Iridium_Quality_Icon.png 1.5x, /mediawiki/images/e/e4/Iridium_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>400g
+</td></tr></table>
+</td>
+<td id="infoboxdetail">
+<table>
+<tr>
+<td><span class="sortkey" style="display:none;">3250</span>
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"></div></div></div>
+</td>
+<td>250g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Silver Quality Icon.png" src="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/24px-Silver_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/36px-Silver_Quality_Icon.png 1.5x, /mediawiki/images/8/8a/Silver_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>312g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Gold Quality Icon.png" src="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/24px-Gold_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/36px-Gold_Quality_Icon.png 1.5x, /mediawiki/images/4/47/Gold_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>375g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Iridium Quality Icon.png" src="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/24px-Iridium_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/36px-Iridium_Quality_Icon.png 1.5x, /mediawiki/images/e/e4/Iridium_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>500g
+</td></tr></table>
+</td>
+<td id="infoboxdetail">
+<table>
+<tr>
+<td><span class="sortkey" style="display:none;">3300</span>
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"></div></div></div>
+</td>
+<td>300g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Silver Quality Icon.png" src="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/24px-Silver_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/8/8a/Silver_Quality_Icon.png/36px-Silver_Quality_Icon.png 1.5x, /mediawiki/images/8/8a/Silver_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>375g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Gold Quality Icon.png" src="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/24px-Gold_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/4/47/Gold_Quality_Icon.png/36px-Gold_Quality_Icon.png 1.5x, /mediawiki/images/4/47/Gold_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>450g
+</td></tr>
+<tr>
+<td><div id="qualitycontainersm"><div id="qualityimage"><img alt="Pufferfish.png" src="/mediawiki/images/thumb/b/ba/Pufferfish.png/24px-Pufferfish.png" width="24" height="24" srcset="/mediawiki/images/thumb/b/ba/Pufferfish.png/36px-Pufferfish.png 1.5x, /mediawiki/images/b/ba/Pufferfish.png 2x" /><div class="qualityindicator"><img alt="Iridium Quality Icon.png" src="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/24px-Iridium_Quality_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/e/e4/Iridium_Quality_Icon.png/36px-Iridium_Quality_Icon.png 1.5x, /mediawiki/images/e/e4/Iridium_Quality_Icon.png 2x" /></div></div></div>
+</td>
+<td>600g
+</td></tr></table>
+</td></tr></table>
+</table>
+</table>
+</div><p>The <b>Pufferfish</b> is a <a href="/Fish" title="Fish">fish</a> that can be caught at <a href="/The_Beach" title="The Beach">the beach</a>, on sunny <a href="/Summer" title="Summer">summer</a> days between 12pm and 4pm.  It can also be purchased from the <a href="/Traveling_Cart" title="Traveling Cart">Traveling Cart</a> for <img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />600-1,000g.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Map"><span class="tocnumber">1</span> <span class="toctext">Map</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Gifting"><span class="tocnumber">2</span> <span class="toctext">Gifting</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Bundles"><span class="tocnumber">3</span> <span class="toctext">Bundles</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Recipes"><span class="tocnumber">4</span> <span class="toctext">Recipes</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Tailoring"><span class="tocnumber">5</span> <span class="toctext">Tailoring</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Quests"><span class="tocnumber">6</span> <span class="toctext">Quests</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#History"><span class="tocnumber">7</span> <span class="toctext">History</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Map">Map</span></h2>
+<p>The Pufferfish can be found in the ocean.
+</p>
+<div id="mapcontainer" style="overflow:hidden;width:400px;height:244px;"><div id="maplocation" style="left:275px;top:200px;"><img alt="Maplocation.png" src="/mediawiki/images/thumb/5/5c/Maplocation.png/20px-Maplocation.png" width="20" height="20" srcset="/mediawiki/images/thumb/5/5c/Maplocation.png/30px-Maplocation.png 1.5x, /mediawiki/images/thumb/5/5c/Maplocation.png/40px-Maplocation.png 2x" /></div><img alt="Map.png" src="/mediawiki/images/4/43/Map.png" width="400" height="244" /></div>
+<h2><span class="mw-headline" id="Gifting">Gifting</span></h2>
+<table class="wikitable" id="roundedborder">
+<tr>
+<th colspan="2"> Villager Reactions
+</th></tr>
+<tr>
+<th>Love
+</th>
+<td><div style="display:inline-block"><a href="/Abigail" title="Abigail"><img alt="Abigail Icon.png" src="/mediawiki/images/6/63/Abigail_Icon.png" width="32" height="32" /></a> <a href="/Abigail" title="Abigail">Abigail</a></div>
+</td></tr>
+<tr>
+<th>Neutral
+</th>
+<td><div style="display:inline-block"><a href="/Demetrius" title="Demetrius"><img alt="Demetrius Icon.png" src="/mediawiki/images/0/0b/Demetrius_Icon.png" width="32" height="32" /></a> <a href="/Demetrius" title="Demetrius">Demetrius</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Elliott" title="Elliott"><img alt="Elliott Icon.png" src="/mediawiki/images/6/6f/Elliott_Icon.png" width="32" height="32" /></a> <a href="/Elliott" title="Elliott">Elliott</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Linus" title="Linus"><img alt="Linus Icon.png" src="/mediawiki/images/d/db/Linus_Icon.png" width="32" height="32" /></a> <a href="/Linus" title="Linus">Linus</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Pam" title="Pam"><img alt="Pam Icon.png" src="/mediawiki/images/b/b6/Pam_Icon.png" width="32" height="32" /></a> <a href="/Pam" title="Pam">Pam</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Sebastian" title="Sebastian"><img alt="Sebastian Icon.png" src="/mediawiki/images/6/6a/Sebastian_Icon.png" width="32" height="32" /></a> <a href="/Sebastian" title="Sebastian">Sebastian</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Willy" title="Willy"><img alt="Willy Icon.png" src="/mediawiki/images/7/73/Willy_Icon.png" width="32" height="32" /></a> <a href="/Willy" title="Willy">Willy</a></div>
+</td></tr>
+<tr>
+<th>Dislike
+</th>
+<td><div style="display:inline-block"><a href="/Alex" title="Alex"><img alt="Alex Icon.png" src="/mediawiki/images/7/73/Alex_Icon.png" width="32" height="32" /></a> <a href="/Alex" title="Alex">Alex</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Caroline" title="Caroline"><img alt="Caroline Icon.png" src="/mediawiki/images/d/d4/Caroline_Icon.png" width="32" height="32" /></a> <a href="/Caroline" title="Caroline">Caroline</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Clint" title="Clint"><img alt="Clint Icon.png" src="/mediawiki/images/7/74/Clint_Icon.png" width="32" height="32" /></a> <a href="/Clint" title="Clint">Clint</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Dwarf" title="Dwarf"><img alt="Dwarf Icon.png" src="/mediawiki/images/0/08/Dwarf_Icon.png" width="32" height="32" /></a> <a href="/Dwarf" title="Dwarf">Dwarf</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Emily" title="Emily"><img alt="Emily Icon.png" src="/mediawiki/images/c/c3/Emily_Icon.png" width="32" height="32" /></a> <a href="/Emily" title="Emily">Emily</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/George" title="George"><img alt="George Icon.png" src="/mediawiki/images/a/ad/George_Icon.png" width="32" height="32" /></a> <a href="/George" title="George">George</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Gus" title="Gus"><img alt="Gus Icon.png" src="/mediawiki/images/d/db/Gus_Icon.png" width="32" height="32" /></a> <a href="/Gus" title="Gus">Gus</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Harvey" title="Harvey"><img alt="Harvey Icon.png" src="/mediawiki/images/7/7a/Harvey_Icon.png" width="32" height="32" /></a> <a href="/Harvey" title="Harvey">Harvey</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Jas" title="Jas"><img alt="Jas Icon.png" src="/mediawiki/images/6/68/Jas_Icon.png" width="32" height="32" /></a> <a href="/Jas" title="Jas">Jas</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Jodi" title="Jodi"><img alt="Jodi Icon.png" src="/mediawiki/images/f/f7/Jodi_Icon.png" width="32" height="32" /></a> <a href="/Jodi" title="Jodi">Jodi</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Kent" title="Kent"><img alt="Kent Icon.png" src="/mediawiki/images/8/86/Kent_Icon.png" width="32" height="32" /></a> <a href="/Kent" title="Kent">Kent</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Krobus" title="Krobus"><img alt="Krobus Icon.png" src="/mediawiki/images/1/10/Krobus_Icon.png" width="32" height="32" /></a> <a href="/Krobus" title="Krobus">Krobus</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Leah" title="Leah"><img alt="Leah Icon.png" src="/mediawiki/images/6/6e/Leah_Icon.png" width="32" height="32" /></a> <a href="/Leah" title="Leah">Leah</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Lewis" title="Lewis"><img alt="Lewis Icon.png" src="/mediawiki/images/b/b6/Lewis_Icon.png" width="32" height="32" /></a> <a href="/Lewis" title="Lewis">Lewis</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Marnie" title="Marnie"><img alt="Marnie Icon.png" src="/mediawiki/images/d/d4/Marnie_Icon.png" width="32" height="32" /></a> <a href="/Marnie" title="Marnie">Marnie</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Maru" title="Maru"><img alt="Maru Icon.png" src="/mediawiki/images/2/23/Maru_Icon.png" width="32" height="32" /></a> <a href="/Maru" title="Maru">Maru</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Penny" title="Penny"><img alt="Penny Icon.png" src="/mediawiki/images/b/bc/Penny_Icon.png" width="32" height="32" /></a> <a href="/Penny" title="Penny">Penny</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Robin" title="Robin"><img alt="Robin Icon.png" src="/mediawiki/images/d/d1/Robin_Icon.png" width="32" height="32" /></a> <a href="/Robin" title="Robin">Robin</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Sam" title="Sam"><img alt="Sam Icon.png" src="/mediawiki/images/5/52/Sam_Icon.png" width="32" height="32" /></a> <a href="/Sam" title="Sam">Sam</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Sandy" title="Sandy"><img alt="Sandy Icon.png" src="/mediawiki/images/7/7d/Sandy_Icon.png" width="32" height="32" /></a> <a href="/Sandy" title="Sandy">Sandy</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Shane" title="Shane"><img alt="Shane Icon.png" src="/mediawiki/images/b/b4/Shane_Icon.png" width="32" height="32" /></a> <a href="/Shane" title="Shane">Shane</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Vincent" title="Vincent"><img alt="Vincent Icon.png" src="/mediawiki/images/0/0b/Vincent_Icon.png" width="32" height="32" /></a> <a href="/Vincent" title="Vincent">Vincent</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Wizard" title="Wizard"><img alt="Wizard Icon.png" src="/mediawiki/images/e/e9/Wizard_Icon.png" width="32" height="32" /></a> <a href="/Wizard" title="Wizard">Wizard</a></div>
+</td></tr>
+<tr>
+<th>Hate
+</th>
+<td><div style="display:inline-block"><a href="/Evelyn" title="Evelyn"><img alt="Evelyn Icon.png" src="/mediawiki/images/5/54/Evelyn_Icon.png" width="32" height="32" /></a> <a href="/Evelyn" title="Evelyn">Evelyn</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Haley" title="Haley"><img alt="Haley Icon.png" src="/mediawiki/images/f/f7/Haley_Icon.png" width="32" height="32" /></a> <a href="/Haley" title="Haley">Haley</a></div>&#32;•&#32;<div style="display:inline-block"><a href="/Pierre" title="Pierre"><img alt="Pierre Icon.png" src="/mediawiki/images/c/cf/Pierre_Icon.png" width="32" height="32" /></a> <a href="/Pierre" title="Pierre">Pierre</a></div>
+</td></tr></table>
+<h2><span class="mw-headline" id="Bundles">Bundles</span></h2>
+<p>Pufferfish is used in the <span style="display:inline; margin-right:0;"><img alt="Bundle Red.png" src="/mediawiki/images/thumb/3/3f/Bundle_Red.png/24px-Bundle_Red.png" width="24" height="24" srcset="/mediawiki/images/thumb/3/3f/Bundle_Red.png/36px-Bundle_Red.png 1.5x, /mediawiki/images/3/3f/Bundle_Red.png 2x" /> <a href="/Bundles#Specialty_Fish_Bundle" title="Bundles">Specialty Fish Bundle</a> in the <a href="/Bundles#Fish_Tank" title="Bundles">Fish Tank</a></span>.
+</p>
+<h2><span class="mw-headline" id="Recipes">Recipes</span></h2>
+<table class="wikitable sortable" id="roundedborder">
+<tr>
+<th class="unsortable">Image</th>
+<th>Name</th>
+<th>Description</th>
+<th>Ingredients</th>
+<th>Restores</th>
+<th>Recipe Source(s)</th>
+<th>Sell Price
+</th></tr>
+<tr>
+<td><div class="center"><div class="floatnone"><a href="/File:Maki_Roll.png" class="image"><img alt="Maki Roll.png" src="/mediawiki/images/b/b6/Maki_Roll.png" width="48" height="48" /></a></div></div>
+</td>
+<td><a href="/Maki_Roll" title="Maki Roll">Maki Roll</a>
+</td>
+<td>Fish and rice wrapped in seaweed.
+</td>
+<td><img alt="Fish.png" src="/mediawiki/images/thumb/f/fb/Fish.png/24px-Fish.png" width="24" height="24" srcset="/mediawiki/images/thumb/f/fb/Fish.png/36px-Fish.png 1.5x, /mediawiki/images/f/fb/Fish.png 2x" /> Any <a href="/Fish" title="Fish">Fish</a> (1)<span id="nametemplate"><img alt="Seaweed.png" src="/mediawiki/images/thumb/1/13/Seaweed.png/24px-Seaweed.png" width="24" height="24" srcset="/mediawiki/images/thumb/1/13/Seaweed.png/36px-Seaweed.png 1.5x, /mediawiki/images/1/13/Seaweed.png 2x" /> <a href="/Seaweed" title="Seaweed">Seaweed</a>&#160;(1)</span><span id="nametemplate"><img alt="Rice.png" src="/mediawiki/images/thumb/d/da/Rice.png/24px-Rice.png" width="24" height="24" srcset="/mediawiki/images/thumb/d/da/Rice.png/36px-Rice.png 1.5x, /mediawiki/images/d/da/Rice.png 2x" /> <a href="/Rice" title="Rice">Rice</a>&#160;(1)</span>
+</td>
+<td data-sort-value="0040"><img alt="Energy.png" src="/mediawiki/images/thumb/a/a9/Energy.png/24px-Energy.png" width="24" height="24" srcset="/mediawiki/images/thumb/a/a9/Energy.png/36px-Energy.png 1.5x, /mediawiki/images/a/a9/Energy.png 2x" /> 100<br /><img alt="Health.png" src="/mediawiki/images/thumb/9/94/Health.png/24px-Health.png" width="24" height="24" srcset="/mediawiki/images/thumb/9/94/Health.png/36px-Health.png 1.5x, /mediawiki/images/9/94/Health.png 2x" /> 45
+</td>
+<td><p style="margin-top: 0; padding-top: 0;">
+<table style="margin: 0; border-spacing: 0; border: 0; padding: 0; border-collapse: collapse;">
+
+<tr>
+<td rowspan="2" style="width: 22px; vertical-align: bottom; padding: 0 4px 2px 0; border: 0;"><img alt="Cooking Channel.png" src="/mediawiki/images/thumb/d/d6/Cooking_Channel.png/22px-Cooking_Channel.png" width="22" height="28" srcset="/mediawiki/images/thumb/d/d6/Cooking_Channel.png/33px-Cooking_Channel.png 1.5x, /mediawiki/images/thumb/d/d6/Cooking_Channel.png/44px-Cooking_Channel.png 2x" />
+</td>
+<td style="padding: 2px 0 3px 0; border: 0; line-height: 0.90; white-space: nowrap;"><a href="/The_Queen_of_Sauce" title="The Queen of Sauce">The Queen of Sauce</a>
+</td></tr>
+<tr>
+<td style="padding: 0 0 0 1px; border: 0; line-height: 1.1; white-space: nowrap; font-size: 95%;">21 Summer, Year 1
+</td></tr></table></p>
+<p class="no-wrap" style="padding-top: 6px;"><img alt="Gus Icon.png" src="/mediawiki/images/thumb/d/db/Gus_Icon.png/22px-Gus_Icon.png" width="22" height="22" srcset="/mediawiki/images/d/db/Gus_Icon.png 1.5x, /mediawiki/images/d/db/Gus_Icon.png 2x" /> <a href="/The_Stardrop_Saloon#Menu" title="The Stardrop Saloon">Stardrop Saloon</a> for <span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />300g</span></p>
+</td>
+<td data-sort-value="0220"><span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />220g</span>
+</td></tr>
+
+
+
+<tr>
+<td><div class="center"><div class="floatnone"><a href="/File:Quality_Fertilizer.png" class="image"><img alt="Quality Fertilizer.png" src="/mediawiki/images/a/a0/Quality_Fertilizer.png" width="48" height="48" /></a></div></div>
+</td>
+<td><a href="/Quality_Fertilizer" title="Quality Fertilizer">Quality Fertilizer</a>
+</td>
+<td>Improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.
+</td>
+<td><span id="nametemplate"><img alt="Sap.png" src="/mediawiki/images/thumb/7/73/Sap.png/24px-Sap.png" width="24" height="24" srcset="/mediawiki/images/thumb/7/73/Sap.png/36px-Sap.png 1.5x, /mediawiki/images/7/73/Sap.png 2x" /> <a href="/Sap" title="Sap">Sap</a>&#160;(2)</span><img alt="Fish.png" src="/mediawiki/images/thumb/f/fb/Fish.png/24px-Fish.png" width="24" height="24" srcset="/mediawiki/images/thumb/f/fb/Fish.png/36px-Fish.png 1.5x, /mediawiki/images/f/fb/Fish.png 2x" /> Any <a href="/Fish" title="Fish">Fish</a> (1)
+</td>
+<td style="text-align: center;">N/A
+</td>
+<td><img alt="Farming Skill Icon.png" src="/mediawiki/images/thumb/8/82/Farming_Skill_Icon.png/24px-Farming_Skill_Icon.png" width="24" height="24" srcset="/mediawiki/images/thumb/8/82/Farming_Skill_Icon.png/36px-Farming_Skill_Icon.png 1.5x, /mediawiki/images/thumb/8/82/Farming_Skill_Icon.png/48px-Farming_Skill_Icon.png 2x" /> <a href="/Farming" title="Farming">Farming</a> Level 9
+</td>
+<td data-sort-value="0010"><span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />10g</span>
+</td></tr>
+
+
+
+<tr>
+<td><div class="center"><div class="floatnone"><a href="/File:Sashimi.png" class="image"><img alt="Sashimi.png" src="/mediawiki/images/4/41/Sashimi.png" width="48" height="48" /></a></div></div>
+</td>
+<td><a href="/Sashimi" title="Sashimi">Sashimi</a>
+</td>
+<td>Raw fish sliced into thin pieces.
+</td>
+<td><img alt="Fish.png" src="/mediawiki/images/thumb/f/fb/Fish.png/24px-Fish.png" width="24" height="24" srcset="/mediawiki/images/thumb/f/fb/Fish.png/36px-Fish.png 1.5x, /mediawiki/images/f/fb/Fish.png 2x" /> Any <a href="/Fish" title="Fish">Fish</a> (1)
+</td>
+<td data-sort-value="0030"><img alt="Energy.png" src="/mediawiki/images/thumb/a/a9/Energy.png/24px-Energy.png" width="24" height="24" srcset="/mediawiki/images/thumb/a/a9/Energy.png/36px-Energy.png 1.5x, /mediawiki/images/a/a9/Energy.png 2x" /> 75<br /><img alt="Health.png" src="/mediawiki/images/thumb/9/94/Health.png/24px-Health.png" width="24" height="24" srcset="/mediawiki/images/thumb/9/94/Health.png/36px-Health.png 1.5x, /mediawiki/images/9/94/Health.png 2x" /> 33
+</td>
+<td><p><img alt="Linus Icon.png" src="/mediawiki/images/d/db/Linus_Icon.png" width="32" height="32" /> <a href="/Linus" title="Linus">Linus</a>&#160;(Mail - 3+ <img alt="HeartIconLarge.png" src="/mediawiki/images/thumb/0/04/HeartIconLarge.png/16px-HeartIconLarge.png" width="16" height="16" srcset="/mediawiki/images/thumb/0/04/HeartIconLarge.png/24px-HeartIconLarge.png 1.5x, /mediawiki/images/thumb/0/04/HeartIconLarge.png/32px-HeartIconLarge.png 2x" />)</p>
+</td>
+<td data-sort-value="0075"><span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />75g</span>
+</td></tr>
+
+
+
+</table>
+<h2><span class="mw-headline" id="Tailoring">Tailoring</span></h2>
+<p>Pufferfish can be used in the spool of the <a href="/2_Willow_Lane#Sewing_Machine" title="2 Willow Lane">Sewing Machine</a> to create the dyeable <a href="/Tailoring" title="Tailoring">Sailor Shirt</a>.  <a href="/File:Shirt259a.png" class="image"><img alt="Shirt259a.png" src="/mediawiki/images/thumb/3/36/Shirt259a.png/24px-Shirt259a.png" width="24" height="24" srcset="/mediawiki/images/3/36/Shirt259a.png 1.5x, /mediawiki/images/3/36/Shirt259a.png 2x" /></a>
+</p>
+<h2><span class="mw-headline" id="Quests">Quests</span></h2>
+<ul><li><a href="/Demetrius" title="Demetrius">Demetrius</a> requests a pufferfish by mail on the 6th of <a href="/Summer" title="Summer">Summer</a> (year 2) in the <a href="/Quests#Aquatic_Research" title="Quests">"Aquatic Research" Quest</a>.  The reward is <span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />1,000g</span> and 1 <a href="/Friendship" title="Friendship">Friendship</a> heart.</li>
+<li><b>Item Delivery:</b> One pufferfish may be randomly requested in <a href="/Summer" title="Summer">Summer</a> at the <a href="/Quests#Help_Wanted_Quests" title="Quests">"Help Wanted" board</a> outside <a href="/Pierre%27s_General_Store" title="Pierre's General Store">Pierre's General Store</a> for a reward of <span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />600g</span> and 150 <a href="/Friendship" title="Friendship">Friendship</a> points.</li>
+<li><b>Fishing:</b> <a href="/Willy" title="Willy">Willy</a> may randomly request 1-4 pufferfish during <a href="/Summer" title="Summer">Summer</a> at the <a href="/Quests#Help_Wanted_Quests" title="Quests">"Help Wanted" board</a> outside <a href="/Pierre%27s_General_Store" title="Pierre's General Store">Pierre's General Store</a> for a reward of <span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />200g</span> per fish.  (You get to keep the fish).</li></ul>
+<h2><span class="mw-headline" id="History">History</span></h2>
+<ul><li> <a href="/Version_History#1.4" title="Version History">1.4</a>: Fixed bug with Aquatic Research quest reward showing as <span class="no-wrap"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />750g</span> in the mail.  Added iridium quality.  Pufferfish can now be used in Tailoring.</li></ul>
+<table class="wikitable" id="navbox">
+<tr>
+<th colspan="2"> <a href="/Fish" title="Fish">Fish</a>
+</th></tr>
+<tr>
+<th>Legendary
+</th>
+<td><a href="/Angler" title="Angler">Angler</a> • <a href="/Crimsonfish" title="Crimsonfish">Crimsonfish</a> • <a href="/Glacierfish" title="Glacierfish">Glacierfish</a> • <a href="/Legend" title="Legend">Legend</a> • <a href="/Mutant_Carp" title="Mutant Carp">Mutant Carp</a>
+</td></tr>
+<tr>
+<th><a href="/The_Beach" title="The Beach">Ocean</a>
+</th>
+<td><a href="/Albacore" title="Albacore">Albacore</a> • <a href="/Anchovy" title="Anchovy">Anchovy</a> •  <a href="/Clam" title="Clam">Clam</a> • <a href="/Cockle" title="Cockle">Cockle</a> • <a href="/Crimsonfish" title="Crimsonfish">Crimsonfish</a> • <a href="/Eel" title="Eel">Eel</a> • <a href="/Flounder" title="Flounder">Flounder</a> • <a href="/Halibut" title="Halibut">Halibut</a> • <a href="/Herring" title="Herring">Herring</a> • <a href="/Mussel" title="Mussel">Mussel</a> • <a href="/Octopus" title="Octopus">Octopus</a> • <a href="/Oyster" title="Oyster">Oyster</a> • <strong class="selflink">Pufferfish</strong> • <a href="/Red_Mullet" title="Red Mullet">Red Mullet</a> • <a href="/Red_Snapper" title="Red Snapper">Red Snapper</a> • <a href="/Sardine" title="Sardine">Sardine</a> • <a href="/Sea_Cucumber" title="Sea Cucumber">Sea Cucumber</a> • <a href="/Squid" title="Squid">Squid</a> • <a href="/Super_Cucumber" title="Super Cucumber">Super Cucumber</a> • <a href="/Tilapia" title="Tilapia">Tilapia</a> • <a href="/Tuna" title="Tuna">Tuna</a>
+</td></tr>
+<tr>
+<th>River
+</th>
+<td><a href="/Angler" title="Angler">Angler</a> • <a href="/Bream" title="Bream">Bream</a> • <a href="/Catfish" title="Catfish">Catfish</a> • <a href="/Chub" title="Chub">Chub</a> • <a href="/Dorado" title="Dorado">Dorado</a> • <a href="/Glacierfish" title="Glacierfish">Glacierfish</a> • <a href="/Lingcod" title="Lingcod">Lingcod</a> • <a href="/Perch" title="Perch">Perch</a> • <a href="/Pike" title="Pike">Pike</a> • <a href="/Rainbow_Trout" title="Rainbow Trout">Rainbow Trout</a> • <a href="/Salmon" title="Salmon">Salmon</a> • <a href="/Shad" title="Shad">Shad</a> • <a href="/Smallmouth_Bass" title="Smallmouth Bass">Smallmouth Bass</a> • <a href="/Sunfish" title="Sunfish">Sunfish</a> • <a href="/Tiger_Trout" title="Tiger Trout">Tiger Trout</a> • <a href="/Walleye" title="Walleye">Walleye</a>
+</td></tr>
+<tr>
+<th><a href="/The_Mountain" title="The Mountain">Mountain Lake</a>
+</th>
+<td><a href="/Bullhead" title="Bullhead">Bullhead</a> • <a href="/Carp" title="Carp">Carp</a> • <a href="/Chub" title="Chub">Chub</a> • <a href="/Largemouth_Bass" title="Largemouth Bass">Largemouth Bass</a> • <a href="/Legend" title="Legend">Legend</a> • <a href="/Lingcod" title="Lingcod">Lingcod</a> • <a href="/Midnight_Carp" title="Midnight Carp">Midnight Carp</a> • <a href="/Perch" title="Perch">Perch</a> • <a href="/Rainbow_Trout" title="Rainbow Trout">Rainbow Trout</a> • <a href="/Smallmouth_Bass" title="Smallmouth Bass">Smallmouth Bass</a> • <a href="/Sturgeon" title="Sturgeon">Sturgeon</a> • <a href="/Walleye" title="Walleye">Walleye</a>
+</td></tr>
+<tr>
+<th><a href="/Cindersap_Forest" title="Cindersap Forest">Cindersap Forest Pond</a>
+</th>
+<td><a href="/Midnight_Carp" title="Midnight Carp">Midnight Carp</a> • <a href="/Perch" title="Perch">Perch</a> • <a href="/Pike" title="Pike">Pike</a> • <a href="/Smallmouth_Bass" title="Smallmouth Bass">Smallmouth Bass</a> • <a href="/Walleye" title="Walleye">Walleye</a>
+</td></tr>
+<tr>
+<th><a href="/Secret_Woods" title="Secret Woods">Secret Woods</a>
+</th>
+<td><a href="/Carp" title="Carp">Carp</a> • <a href="/Catfish" title="Catfish">Catfish</a> • <a href="/Woodskip" title="Woodskip">Woodskip</a>
+</td></tr>
+<tr>
+<th><a href="/The_Mines" title="The Mines">Mines</a>
+</th>
+<td><a href="/Ghostfish" title="Ghostfish">Ghostfish</a> • <a href="/Ice_Pip" title="Ice Pip">Ice Pip</a> • <a href="/Lava_Eel" title="Lava Eel">Lava Eel</a> • <a href="/Stonefish" title="Stonefish">Stonefish</a>
+</td></tr>
+<tr>
+<th><a href="/The_Sewers" title="The Sewers">Sewers</a>
+</th>
+<td><a href="/Carp" title="Carp">Carp</a> • <a href="/Mutant_Carp" title="Mutant Carp">Mutant Carp</a>
+</td></tr>
+<tr>
+<th><a href="/The_Desert" title="The Desert">Desert</a>
+</th>
+<td><a href="/Sandfish" title="Sandfish">Sandfish</a> • <a href="/Scorpion_Carp" title="Scorpion Carp">Scorpion Carp</a>
+</td></tr>
+<tr>
+<th style="white-space:nowrap;"><a href="/Mutant_Bug_Lair" title="Mutant Bug Lair">Mutant Bug Lair</a>
+</th>
+<td><a href="/Carp" title="Carp">Carp</a> • <a href="/Slimejack" title="Slimejack">Slimejack</a>
+</td></tr>
+<tr>
+<th><a href="/Witch%27s_Swamp" title="Witch's Swamp">Witch's Swamp</a>
+</th>
+<td><a href="/Void_Salmon" title="Void Salmon">Void Salmon</a>
+</td></tr>
+<tr>
+<th><a href="/Night_Market" title="Night Market">Night Market</a>
+</th>
+<td><a href="/Blobfish" title="Blobfish">Blobfish</a> • <a href="/Midnight_Squid" title="Midnight Squid">Midnight Squid</a> • <a href="/Spook_Fish" title="Spook Fish">Spook Fish</a>
+</td></tr>
+<tr>
+<th><a href="/Crab_Pot" title="Crab Pot">Crab Pot</a>
+</th>
+<td><a href="/Clam" title="Clam">Clam</a> • <a href="/Cockle" title="Cockle">Cockle</a> • <a href="/Crab" title="Crab">Crab</a> • <a href="/Crayfish" title="Crayfish">Crayfish</a> • <a href="/Lobster" title="Lobster">Lobster</a> • <a href="/Mussel" title="Mussel">Mussel</a> • <a href="/Oyster" title="Oyster">Oyster</a> • <a href="/Periwinkle" title="Periwinkle">Periwinkle</a> • <a href="/Shrimp" title="Shrimp">Shrimp</a> • <a href="/Snail" title="Snail">Snail</a>
+</td></tr></table>
+
+<!--
+NewPP limit report
+Cached time: 20200216154424
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.387 seconds
+Real time usage: 0.458 seconds
+Preprocessor visited node count: 3114/1000000
+Preprocessor generated node count: 17000/1000000
+Post‐expand include size: 44703/2097152 bytes
+Template argument size: 3414/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/100
+-->
+
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  223.349      1 - -total
+ 39.92%   89.157      3 - Template:RecipeRow/NoBuffs
+ 37.38%   83.483      1 - Template:Infobox_fish
+ 34.77%   77.653      4 - Template:Description
+ 15.39%   34.377      1 - Quality_Fertilizer
+ 15.33%   34.235      1 - Maki_Roll
+ 14.90%   33.273      3 - Template:Qualityprice
+ 11.73%   26.189      1 - Sashimi
+  9.33%   20.841     12 - Template:Quality
+  4.47%    9.977      8 - Template:Price
+-->
+
+<!-- Saved in parser cache with key wzfhxpxdqs:pcache:idhash:2486-0!*!0!!en!5!* and timestamp 20200216154423 and revision id 95466
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://stardewvalleywiki.com/mediawiki/index.php?title=Pufferfish&amp;oldid=95466">https://stardewvalleywiki.com/mediawiki/index.php?title=Pufferfish&amp;oldid=95466</a>"					</div>
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/Category:Ocean_fish" title="Category:Ocean fish">Ocean fish</a></li><li><a href="/Category:Summer_fish" title="Category:Summer fish">Summer fish</a></li></ul></div></div>				<div class="visualClear"></div>
+				<div style="width:100%;"><div style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58); margin-top:10px; margin-bottom:-10px;">
+<div id="stardew_bottom_responsive"></div>
+<script type="text/javascript">
+nads.createAd('stardew_bottom_responsive',
+    {
+        sizes: [],
+        adsensePub: '2969324762379448',
+        adsenseSlot: '6570522419',
+        floor: 0.1,
+        refreshLimit: 10,
+        refreshTime: 90,
+        refreshDisabled: ["adsense"],
+        report: {
+            enabled: true,
+            wording: 'Report Ad',
+            position: 'fixed-bottom-right'
+        }
+    }
+);
+</script>
+</div></div>
+				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Pufferfish&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Pufferfish" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li  id="ca-nstab-main" class="selected"><span><a href="/Pufferfish"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+															<li  id="ca-talk" class="new"><span><a href="/mediawiki/index.php?title=Talk:Pufferfish&amp;action=edit&amp;redlink=1"  title="Discussion about the content page [t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label">
+							<span>Variants</span><a href="#"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/Pufferfish" >Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="/mediawiki/index.php?title=Pufferfish&amp;action=edit"  title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="/mediawiki/index.php?title=Pufferfish&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>More</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/mediawiki/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search" title="Search Stardew Valley Wiki [f]" accesskey="f" id="searchInput" /><input type="hidden" value="Special:Search" name="title" /><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton" /><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton" />							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/Stardew_Valley_Wiki"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="/Stardew_Valley_Wiki" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-recentchanges"><a href="/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-Admin-noticeboard"><a href="/Stardew_Valley_Wiki:Admin_noticeboard">Admin noticeboard</a></li><li id="n-randompage"><a href="/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-Official_Links' aria-labelledby='p-Official_Links-label'>
+			<h3 id='p-Official_Links-label'>Official Links</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Official-Site"><a href="https://stardewvalley.net" rel="nofollow" target="_blank">Official Site</a></li><li id="n-Official-Forums"><a href="https://community.playstarbound.com/forums/stardew-valley.72/" rel="nofollow" target="_blank">Official Forums</a></li><li id="n-Official-Merchandise"><a href="https://www.stardewvalley.net/shop/" rel="nofollow" target="_blank">Official Merchandise</a></li><li id="n-Reddit"><a href="https://www.reddit.com/r/StardewValley" rel="nofollow" target="_blank">Reddit</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="/Special:WhatLinksHere/Pufferfish" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/Special:RecentChangesLinked/Pufferfish" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="/mediawiki/index.php?title=Pufferfish&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="/mediawiki/index.php?title=Pufferfish&amp;oldid=95466" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/mediawiki/index.php?title=Pufferfish&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>In other languages</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-de"><a href="http://de.stardewvalleywiki.com/Kugelfisch" title="Kugelfisch – Deutsch" lang="de" hreflang="de">Deutsch</a></li><li class="interlanguage-link interwiki-es"><a href="http://es.stardewvalleywiki.com/Pez_globo" title="Pez globo – español" lang="es" hreflang="es">Español</a></li><li class="interlanguage-link interwiki-fr"><a href="http://fr.stardewvalleywiki.com/Poisson-globe" title="Poisson-globe – français" lang="fr" hreflang="fr">Français</a></li><li class="interlanguage-link interwiki-it"><a href="http://it.stardewvalleywiki.com/Pesce_palla" title="Pesce palla – italiano" lang="it" hreflang="it">Italiano</a></li><li class="interlanguage-link interwiki-ja"><a href="http://ja.stardewvalleywiki.com/%E3%83%8F%E3%83%AA%E3%82%BB%E3%83%B3%E3%83%9C%E3%83%B3" title="ハリセンボン – 日本語" lang="ja" hreflang="ja">日本語</a></li><li class="interlanguage-link interwiki-ko"><a href="http://ko.stardewvalleywiki.com/%EB%B3%B5%EC%96%B4" title="복어 – 한국어" lang="ko" hreflang="ko">한국어</a></li><li class="interlanguage-link interwiki-hu"><a href="http://hu.stardewvalleywiki.com/G%C3%B6mbhal" title="Gömbhal – magyar" lang="hu" hreflang="hu">Magyar</a></li><li class="interlanguage-link interwiki-pt"><a href="http://pt.stardewvalleywiki.com/Baiacu" title="Baiacu – português" lang="pt" hreflang="pt">Português</a></li><li class="interlanguage-link interwiki-ru"><a href="http://ru.stardewvalleywiki.com/%D0%A0%D1%8B%D0%B1%D0%B0-%D0%B5%D0%B6" title="Рыба-еж – русский" lang="ru" hreflang="ru">Русский</a></li><li class="interlanguage-link interwiki-tr"><a href="http://tr.stardewvalleywiki.com/Balon_Bal%C4%B1%C4%9F%C4%B1" title="Balon Balığı – Türkçe" lang="tr" hreflang="tr">Türkçe</a></li><li class="interlanguage-link interwiki-zh"><a href="http://zh.stardewvalleywiki.com/%E6%B2%B3%E8%B1%9A" title="河豚 – 中文" lang="zh" hreflang="zh">中文</a></li>					</ul>
+							</div>
+		</div>
+				<div id="side-adspace" style="height:100%;"><div style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58);">
+<div id="stardew_vertical_sidebar"></div>
+<script type="text/javascript">
+nads.createAd('stardew_vertical_sidebar',
+    {
+        sizes: [],
+        adsensePub: '2969324762379448',
+        adsenseSlot: '4552456012',
+        floor: 0.1,
+        refreshLimit: 10,
+        refreshTime: 90,
+        refreshDisabled: ["adsense"],
+        report: {
+            enabled: true,
+            wording: 'Report Ad',
+            position: 'fixed-bottom-right'
+        }
+    }
+);
+</script>
+</div></div></div>
+		</div></div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 26 January 2020, at 00:28.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike</a> unless otherwise noted.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="/Stardew_Valley_Wiki:Privacy_policy" title="Stardew Valley Wiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/Stardew_Valley_Wiki:About" title="Stardew Valley Wiki:About">About Stardew Valley Wiki</a></li>
+											<li id="footer-places-disclaimer"><a href="/Stardew_Valley_Wiki:General_disclaimer" title="Stardew Valley Wiki:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-mobileview"><a href="https://stardewvalleywiki.com/mediawiki/index.php?title=Pufferfish&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="/mediawiki/resources/assets/licenses/cc-by-nc-sa.png" alt="Creative Commons Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="//www.mediawiki.org/"><img src="/mediawiki/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/mediawiki/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mediawiki/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>						</li>
+										<li id="hosted-by">
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42436586-3', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+
+</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":85});
+} );</script>
+	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"4b66539c25","applicationID":"359151563","transactionName":"NFBTNkdZX0NWUEQMDg0acAFBUV5eGFJTEQgMWx4UXF1G","queueTime":0,"applicationTime":100,"atts":"GBdQQA9DTE0=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
