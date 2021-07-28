@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 from flask import Flask, jsonify, request
 from flask_restx import Resource, Api
-from character import Character
-from fish import Fish
-from souputils import SoupUtils
-from bundles import Bundles
-import constants
+from src.character import Character
+from src.fish import Fish
+from src.souputils import SoupUtils
+from src.bundles import Bundles
+import src.constants as constants
 import os
 import requests
 

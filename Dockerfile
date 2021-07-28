@@ -1,4 +1,5 @@
 FROM python:3.7
+ENV PYTHONPATH "${PYTHONPATH}:."
 
 # Change the stop signal to sigint to more quickly stop this container.
 STOPSIGNAL SIGINT
